@@ -41,6 +41,20 @@ app.put('/teams/:id', (req, res) => {
   return res.status(200).json(teams[teamIndex]); 
 }); 
 
+app.delete('/teams/:id', (req, res) => {
+  const {id} = req.params;
+
+  const teamIndex = teams.findIndex(team => team.id == id);
+
+  if (teamIndex < 0) {
+    return res.status(400).json({ message: 'the id cannot be found'})
+  }
+
+  teams.splice(teamIndex, 1);
+  return res.status(200).json();
+});
+
+
 app.listen(3000, () => {
   console.log('server started');
 });
