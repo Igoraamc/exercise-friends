@@ -18,6 +18,10 @@ app.post('/teams', (req, res) => {
   return res.status(201).json();
 });
 
+app.get('/teams', (req , res) => {
+  return res.json(teams);
+});
+
 
 
 app.listen(3000, () => {
